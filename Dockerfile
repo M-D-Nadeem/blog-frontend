@@ -1,12 +1,11 @@
 FROM node:alpine3.18 as build
 
-
 # Build App
 WORKDIR /app
-COPY package.json .
+COPY package.json . 
 RUN npm install
 COPY . .
-RUN npm run build
+RUN npm run build && ls -la /app  # Debugging step to confirm build directory
 
 # Serve with Nginx
 FROM nginx:1.23-alpine
