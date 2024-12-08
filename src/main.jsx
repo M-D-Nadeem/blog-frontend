@@ -11,11 +11,13 @@ import BlogDetails from './pages/BlogDetails.jsx';
 import AddBlog from './pages/AddBlog.jsx';
 import NotFoundPage from './pages/NotFoundPage.jsx';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import { Toaster } from 'react-hot-toast';  // Import Toaster from react-hot-toast
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
     <GoogleOAuthProvider clientId="YOUR_GOOGLE_CLIENT_ID">
       <Router>
+        <Toaster />  {/* Add Toaster here */}
         <Routes>
           <Route path="/" element={<Auth />} />
           <Route path="/blog" element={<App />}>
