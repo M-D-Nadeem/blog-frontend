@@ -25,3 +25,13 @@ jobs:
         run: docker build -t nadeem9748/reactjs.app .
       - name: Publish Image to Docker Hub
         run: docker push nadeem9748/reactjs.app:latest
+  deploy:
+    needs: build
+    runs-on: self-hosted 
+    steps:
+      - name: Pull image from docker hub
+        run: docker pull nadeem9748/reactjs.app:latest 
+      - name: Delete old container
+        run: docker rm -f reactjs-app-container
+      - name: Run Docker Container
+        run: docker run -d -p 4000:80 --name reactjs-app-container nadeem9748/reactjs.app
