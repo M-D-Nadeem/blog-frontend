@@ -17,7 +17,8 @@ const BlogList = () => {
       dispatch(ShowLoading());
       const response = await dispatch(getAllBlogs());
       dispatch(HideLoading());
-
+      console.log(response);
+      
       if (response?.payload?.success) {
         setBlogs(response?.payload?.posts);
       } 
